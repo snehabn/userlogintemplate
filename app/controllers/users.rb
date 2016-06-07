@@ -3,19 +3,14 @@ get '/users/new' do
   erb :'users/new'
 end
 
-post '/users/new' do
-  @user = User.new(username: params[:username], password: params[:password])
-  if @user.save
-    session[:id] = @user.id
-    redirect "/users/#{@user.id}"
-  else
-    #error handling goes here
-    redirect '/users/new'
-  end
+get '/users/index' do
+  @users = User.all
+  erb :'/users/index'
 end
 
 #aka Profile page
 get '/users/:id' do
   @user = User.find(params[:id])
+  @users = User.all
   erb :'users/show'
 end
