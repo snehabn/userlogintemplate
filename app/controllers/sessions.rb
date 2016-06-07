@@ -1,18 +1,18 @@
 # aka "Login"
 get '/sessions/new' do
-  erb :'sessions/new'
+  erb :'users/new'
 end
 
 post '/sessions/new' do
   @user = User.find_by(username: params[:username])
   password = params[:password]
 
-  if @user && @user.authenticate(password)
+  if @user && @user.authenticate(@user.username, @user.password)
     session[:id] = @user.id
-    redirect '/'
+    redirect '/users/index'
   else
     #error handling goes here, via if logic on homepage
-    redirect '/sessions/new'
+    redirect '/login'
   end
 end
 
