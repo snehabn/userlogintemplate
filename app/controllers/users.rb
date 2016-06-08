@@ -20,3 +20,14 @@ get '/users/:id' do
   erb :'/users/show'
 end
 
+post '/users/new' do
+  user = User.new(username: params[:username])
+  user.password = params[:password]
+  if user.save
+    session[:user_id] = user.id
+    redirect "/users/#{current_user.id}"
+  else
+    redirect'/'
+  end
+end
+
