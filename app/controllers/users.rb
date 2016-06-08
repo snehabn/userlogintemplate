@@ -8,9 +8,15 @@ get '/users/index' do
   erb :'/users/index'
 end
 
+get '/users/:id/comments' do
+  @user = User.find(params[:id])
+  erb :'/users/show_comments'
+end
+
 #aka Profile page
 get '/users/:id' do
   @user = User.find(params[:id])
   @users = User.all
-  erb :'users/show'
+  erb :'/users/show'
 end
+

@@ -18,7 +18,15 @@
   <title></title>
 </head>
 <body>
- <%= yield %>
+  <div class="nav">
+    <% if !session[:user_id] %>
+    <%= erb :_login %>
+    <% else %>
+    <a href='/users/<%= current_user.id %>'>Profile</a> ||
+     <a href='/sessions/delete'>Log Out</a>
+    <% end %>
+  </div>
+  <%= yield %>
 
 </body>
 </html>

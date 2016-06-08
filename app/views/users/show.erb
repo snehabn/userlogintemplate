@@ -1,6 +1,13 @@
 <h2>Hello <%= current_user.username %>!</h2>
-<div id=user-stats>
-
+<div id=user-profile>
+  <form action="/#" method="POST">
+    <input type="textfield" name="content" placeholder="Create something!">
+    <input type="submit" value="Post">
+  </form>
 </div>
-<a href='/sessions/delete'>Log out</a>
+<br>
 
+
+
+<a href='/sessions/delete'>Log out</a>
+<a href="/">Home</a>

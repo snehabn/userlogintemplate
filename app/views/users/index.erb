@@ -1,9 +1,9 @@
-<div id=user-list>
-  <% @users.each do |user| %>
-    <% if user.username != current_user.username %>
-    <h3><a href="#"><%= user.username %></a></h3>
-    <% end %>
-  <% end %>
+<div class="container">
+  <div id=user-list>
+    <h2>Hello <%= current_user.username %>!</h2>
+
+  </div>
+  <a href='/sessions/delete'>Log out</a>
+  <a href="/users/<%=current_user.id%>">Profile</a>
+  <a href='/post'>Home</a>
 </div>
-<a href='/sessions/delete'>Log out</a>
-<a href="/users/<%=current_user.id%>">Profile</a>
